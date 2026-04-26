@@ -8,13 +8,11 @@ import SwiftUI
 
 struct GaleriaView: View {
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color(UIColor.systemBackground).ignoresSafeArea()
-                Text("Galeria em breve...")
-                    .foregroundColor(.gray)
-            }
+        ZStack {
+            Text("Galeria em breve...")
+                .foregroundStyle(.secondary)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

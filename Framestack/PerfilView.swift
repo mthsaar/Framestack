@@ -8,12 +8,14 @@ import SwiftUI
 
 struct PerfilView: View {
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color(UIColor.systemBackground).ignoresSafeArea()
-                Text("Perfil em breve...")
-                    .foregroundColor(.gray)
-            }
+        ZStack {
+            Text("Perfil em breve...")
+                .foregroundStyle(.secondary)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
+}
+
+#Preview {
+    PerfilView()
 }

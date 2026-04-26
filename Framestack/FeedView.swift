@@ -11,9 +11,9 @@ struct FeedView: View {
 
     var body: some View {
         ZStack {
-            Color(UIColor.systemBackground).ignoresSafeArea()
             Text("Feed em breve...")
-                .foregroundColor(.gray)
+                .foregroundStyle(.secondary)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

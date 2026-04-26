@@ -11,60 +11,94 @@ struct WelcomeView: View {
 
     var body: some View {
         ZStack {
-            Color(UIColor.systemBackground).ignoresSafeArea()
+            // Fundo adaptativo
+            Color(UIColor.systemBackground)
+                .ignoresSafeArea()
 
-            VStack(spacing: 32) {
+            VStack(spacing: 0) {
 
                 Spacer()
 
-                VStack(spacing: 12) {
-                    Image(systemName: "camera.aperture")
-                        .font(.system(size: 56))
-                        .foregroundColor(.white)
+                // Logo e título
+                VStack(spacing: 14) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color(red: 0.11, green: 0.62, blue: 0.46).opacity(0.12))
+                            .frame(width: 72, height: 72)
+                            .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color(red: 0.11, green: 0.62, blue: 0.46).opacity(0.25), lineWidth: 0.5)
+                                )
+
+                        Image(systemName: "camera.aperture")
+                            .font(.system(size: 32, weight: .light))
+                            .foregroundStyle(.primary)
+                    }
 
                     Text("Framestack")
                         .font(.largeTitle)
                         .fontWeight(.medium)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.primary)
 
-                    Text("A galeria profissional dos fotógrafos.")
+                    Text("A galeria profissional\ndos fotógrafos")
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
+                        .lineSpacing(2)
                 }
 
                 Spacer()
 
-                VStack(spacing: 12) {
-                    Button("Criar conta") {
-                        estaLogado = true
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(red: 0.11, green: 0.62, blue: 0.46))
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
+                // Card glass com botões
+                VStack(spacing: 10) {
 
-                    Button("Entrar") {
+                    // Botão criar conta
+                    Button {
                         estaLogado = true
+                    } label: {
+                        Text("Criar conta")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 14)
+                            .background(Color(red: 0.11, green: 0.62, blue: 0.46))
+                            .clipShape(Capsule())
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.white.opacity(0.08))
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
+                    .buttonStyle(.plain)
+
+                    // Botão entrar
+                    Button {
+                        estaLogado = true
+                    } label: {
+                        Text("Entrar")
+                            .font(.system(size: 16))
+                            .foregroundStyle(.primary)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 14)
+                            .background(Color(red: 0.11, green: 0.62, blue: 0.46).opacity(0.12))
+                            .clipShape(Capsule())
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.primary.opacity(0.12), lineWidth: 0.5)
+                            )
+                    }
+                    .buttonStyle(.plain)
+
+                    Divider()
+                        .padding(.vertical, 4)
 
                     Text("Ao continuar, você concorda com os Termos de Uso do Framestack")
                         .font(.caption2)
-                        .foregroundColor(.gray)
+                        .foregroundStyle(.tertiary)
                         .multilineTextAlignment(.center)
-                        .padding(.top, 4)
                 }
+                .padding(20)
+                .background(.regularMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 24))
                 .padding(.horizontal, 24)
                 .padding(.bottom, 40)
             }
         }
-        .preferredColorScheme(.dark)
     }
 }
 
